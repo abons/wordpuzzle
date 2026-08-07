@@ -23,15 +23,12 @@ definition with the answer masked out. One daily puzzle for everyone, plus free 
 from the [latest release](https://github.com/abons/wordpuzzle/releases/latest), then open it (you may
 need to allow "install unknown apps" for your browser).
 
-**Via F-Droid (recommended — updates arrive automatically):** add this repository in the
-[F-Droid](https://f-droid.org/) client (*Settings → Repositories → +*):
+It is also on the shared landing page for all four games:
+<https://abons.github.io/wordguesser/>.
 
-```
-https://abons.github.io/wordguesser/fdroid/repo?fingerprint=C74E4BC48DBE3CCF800A859BC5A9118B23A19BA38C8B33573DBA1BDEB7E456EE
-```
-
-Then search for **Word Cross** and install. That repository is shared by all four sibling games — one
-URL, one fingerprint — so a new game shows up without adding anything. Each APK is signed by its
+There is no update channel — the F-Droid repository that used to serve these games was retired on
+2026-08-07. Check the releases page above for a newer version; a new APK installs straight over an
+older one and keeps your progress. Each APK is signed by its
 **own** app key; Word Cross's certificate is SHA-256
 `24:05:A1:0D:35:24:40:37:9A:88:91:82:9F:02:BE:7C:B1:26:D1:55:6C:D7:33:92:93:8B:A9:FE:A2:AD:D8:CA`.
 
