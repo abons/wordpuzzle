@@ -1,13 +1,12 @@
 # 🧩 Word Cross / Woord Puzzel
 
-**A tiny, native Android crossword game** — pure Kotlin, no ads, no trackers, ~66&nbsp;KB. Every
+**A tiny, native Android crossword game** — pure Kotlin, no ads, no trackers, ~79&nbsp;KB. Every
 puzzle is a generated interlocking ("Zweedse") crossword, and every clue is a real dictionary
-definition with the answer masked out. One daily puzzle for everyone, plus free play in three sizes.
-**The words, the definitions and the interface are Dutch.**
+definition with the answer masked out. One daily puzzle for everyone, plus free play in three sizes
+and a fourth you can earn. **The words, the definitions and the interface are Dutch.**
 
-[![Download APK](https://img.shields.io/badge/download-APK%20v1.0-16a34a)](https://github.com/abons/wordpuzzle/releases/download/v1.0/com.hrbons.wordpuzzle_1.apk)
-[![F-Droid repo](https://img.shields.io/badge/F--Droid-add%20repo-1976d2)](https://abons.github.io/wordguesser/)
-![size](https://img.shields.io/badge/APK-66%20KB-brightgreen)
+[![Download APK](https://img.shields.io/badge/download-APK%20v1.1-16a34a)](https://github.com/abons/wordpuzzle/releases/download/v1.1/com.hrbons.wordpuzzle_2.apk)
+![size](https://img.shields.io/badge/APK-79%20KB-brightgreen)
 ![Android](https://img.shields.io/badge/Android-5.0%2B-3ddc84)
 ![no ads](https://img.shields.io/badge/ads-none-black)
 
@@ -19,7 +18,7 @@ definition with the answer masked out. One daily puzzle for everyone, plus free 
 
 ## Install
 
-**Direct APK** — [com.hrbons.wordpuzzle_1.apk](https://github.com/abons/wordpuzzle/releases/download/v1.0/com.hrbons.wordpuzzle_1.apk)
+**Direct APK** — [com.hrbons.wordpuzzle_2.apk](https://github.com/abons/wordpuzzle/releases/download/v1.1/com.hrbons.wordpuzzle_2.apk)
 from the [latest release](https://github.com/abons/wordpuzzle/releases/latest), then open it (you may
 need to allow "install unknown apps" for your browser).
 
@@ -42,6 +41,13 @@ older one and keeps your progress. Each APK is signed by its
   it is reproducible across launches and comparable with anyone else playing that day.
 - 📐 **Three sizes in free play:** klein (±8 words), normaal (±16) and groot (±24). The daily
   ignores the choice on purpose: it has to be the same challenge for everybody.
+- ⌨️ **Typing that carries on.** After Controleer every correct letter is locked, the cursor moves
+  into the next open word by itself, and arrows on the clue bar step past the words already full.
+- 💾 **Your grid survives closing the app.** The daily and free play each keep their own board,
+  locked letters included.
+- 🪙 **Coins, for content and never an advantage.** Solving pays — 3 for the daily, 1 for a free
+  puzzle, 1 more without a hint — and 30 coins unlock the **extra-large puzzle** (±36 words, 19
+  columns) for good. Hints stay free, there is nothing to buy and no billing code in this APK.
 - ✅ **Controleer and Hint.** Check marks wrong letters red; the hint menu reveals a single letter
   or the whole word — and the statistics count solving without hints separately.
 - 📊 **Statistics and streaks:** solved, solved without hints, dailies, current and best day streak.
@@ -56,15 +62,15 @@ older one and keeps your progress. Each APK is signed by its
 ## Why so small?
 
 It is written in **pure Kotlin on the Android framework only** — no AppCompat, Compose, Material or
-third-party runtime libraries, and the whole UI is built in code. Result: a ~66&nbsp;KB APK that runs
+third-party runtime libraries, and the whole UI is built in code. Result: a ~79&nbsp;KB APK that runs
 on Android 5.0+.
 
 ## Verify the download
 
-`com.hrbons.wordpuzzle_1.apk` — 67,127 bytes, SHA-256:
+`com.hrbons.wordpuzzle_2.apk` — 80,622 bytes, SHA-256:
 
 ```
-92fa281ba45ba3be1f05d3a0bcd54aba70a0879dc90cbed91c99d2ff11145c84
+9e6f48a8c0ec4538447771cd7b3c8502fd3d3c1d7622c258d0411e4d4520510d
 ```
 
 ## Privacy
