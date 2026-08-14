@@ -1,12 +1,13 @@
 # 🧩 Word Cross / Woord Puzzel
 
-**A tiny, native Android crossword game** — pure Kotlin, no ads, no trackers, ~79&nbsp;KB. Every
+**A tiny, native Android crossword game** — pure Kotlin, no ads, no trackers, ~92&nbsp;KB. Every
 puzzle is a generated interlocking ("Zweedse") crossword, and every clue is a real dictionary
-definition with the answer masked out. One daily puzzle for everyone, plus free play in three sizes
-and a fourth you can earn. **The words, the definitions and the interface are Dutch.**
+definition with the answer masked out. One daily puzzle for everyone — with a daily leaderboard to
+put your time on — plus free play in three sizes and a fourth you can earn. **The words, the
+definitions and the interface are Dutch.**
 
-[![Download APK](https://img.shields.io/badge/download-APK%20v1.1-16a34a)](https://github.com/abons/wordpuzzle/releases/download/v1.1/com.hrbons.wordpuzzle_2.apk)
-![size](https://img.shields.io/badge/APK-79%20KB-brightgreen)
+[![Download APK](https://img.shields.io/badge/download-APK%20v1.2-16a34a)](https://github.com/abons/wordpuzzle/releases/download/v1.2/com.hrbons.wordpuzzle_3.apk)
+![size](https://img.shields.io/badge/APK-92%20KB-brightgreen)
 ![Android](https://img.shields.io/badge/Android-5.0%2B-3ddc84)
 ![no ads](https://img.shields.io/badge/ads-none-black)
 
@@ -18,7 +19,7 @@ and a fourth you can earn. **The words, the definitions and the interface are Du
 
 ## Install
 
-**Direct APK** — [com.hrbons.wordpuzzle_2.apk](https://github.com/abons/wordpuzzle/releases/download/v1.1/com.hrbons.wordpuzzle_2.apk)
+**Direct APK** — [com.hrbons.wordpuzzle_3.apk](https://github.com/abons/wordpuzzle/releases/download/v1.2/com.hrbons.wordpuzzle_3.apk)
 from the [latest release](https://github.com/abons/wordpuzzle/releases/latest), then open it (you may
 need to allow "install unknown apps" for your browser).
 
@@ -45,11 +46,19 @@ older one and keeps your progress. Each APK is signed by its
   into the next open word by itself, and arrows on the clue bar step past the words already full.
 - 💾 **Your grid survives closing the app.** The daily and free play each keep their own board,
   locked letters included.
-- 🪙 **Coins, for content and never an advantage.** Solving pays — 3 for the daily, 1 for a free
-  puzzle, 1 more without a hint — and 30 coins unlock the **extra-large puzzle** (±36 words, 19
-  columns) for good. Hints stay free, there is nothing to buy and no billing code in this APK.
-- ✅ **Controleer and Hint.** Check marks wrong letters red; the hint menu reveals a single letter
-  or the whole word — and the statistics count solving without hints separately.
+- 🏆 **A daily leaderboard.** Finish the daily and you may put a name on the board for that day,
+  ranked on corrected time: the clock, plus 30 seconds for every wrong letter Controleer found and
+  60 for every hint. So help is a trade rather than a disqualification — one hint still beats being
+  five minutes slower. Sending your name is a choice; solving alone never sends anything.
+- 🪙 **Coins, earned by playing and spent on help.** Solving pays — 3 for the daily, 1 for a free
+  puzzle, 1 more without a hint — and Controleer pays a coin back for every word it newly confirms,
+  so being right costs nothing and guessing does. Help has a price: 1 coin to check, 1 for a letter,
+  3 for a whole word, 30 to unlock the **extra-large puzzle** (±36 words, 19 columns) for good, and
+  10 to put a broken day streak back. **There is nothing to buy and no billing code in this APK** —
+  coins come out of play only.
+- ✅ **Controleer and Hint.** Check marks wrong letters red and locks the right ones; the hint menu
+  reveals a single letter or the whole word — in the daily too, where it costs rank instead of being
+  refused. The statistics count solving without hints separately.
 - 📊 **Statistics and streaks:** solved, solved without hints, dailies, current and best day streak.
 - 🏞️ **Eight drawn backdrops** — mountains, ocean, forest, desert, city, night, meadow, autumn —
   built entirely from canvas shapes, so there is not a single image file in the APK.
@@ -62,23 +71,28 @@ older one and keeps your progress. Each APK is signed by its
 ## Why so small?
 
 It is written in **pure Kotlin on the Android framework only** — no AppCompat, Compose, Material or
-third-party runtime libraries, and the whole UI is built in code. Result: a ~79&nbsp;KB APK that runs
-on Android 5.0+.
+third-party runtime libraries, and the whole UI is built in code. The daily leaderboard talks to its
+database over plain HTTPS, without an SDK. Result: a ~92&nbsp;KB APK that runs on Android 5.0+.
 
 ## Verify the download
 
-`com.hrbons.wordpuzzle_2.apk` — 80,622 bytes, SHA-256:
+`com.hrbons.wordpuzzle_3.apk` — 94,136 bytes, SHA-256:
 
 ```
-9e6f48a8c0ec4538447771cd7b3c8502fd3d3c1d7622c258d0411e4d4520510d
+681f02a7147d02ed309bf7040e147ce4c0ed45023741b16a1ab9e213a6840874
 ```
 
 ## Privacy
 
 No ads, no analytics, no accounts, no third-party library in the build. The APK asks for INTERNET
-and ACCESS_NETWORK_STATE, and they are there for one thing: downloading the Dutch word list and its
-definitions on first start. Nothing is uploaded, and your puzzles, statistics and streaks stay on
-the device.
+and ACCESS_NETWORK_STATE, and they are there for two things: downloading the Dutch word list and its
+definitions on first start, and the daily leaderboard.
+
+The leaderboard is the only thing this app ever uploads, and only when you ask it to. What goes up is
+what you type as a name plus three numbers from that puzzle — your time, how many wrong letters
+Controleer found and how many hints you used — filed under the day you solved. Type whatever name you
+like; it is a label on a public list, not an account. Solving without submitting sends nothing at all,
+and everything else — your puzzles, statistics and streaks — never leaves the device.
 
 ## Word data
 
@@ -94,5 +108,5 @@ If you enjoy it, you can [☕ support the developer on Ko-fi](https://ko-fi.com/
 ---
 
 *This repository is the public download for Word Cross: the signed APK, attached to a release per
-version. The source is kept in a private repository. Updates are served through the shared hrbons
-F-Droid repository linked above.*
+version. The source is kept in a private repository. There is no update channel — watch the
+[releases](https://github.com/abons/wordpuzzle/releases) page, or the shared landing page above.*
