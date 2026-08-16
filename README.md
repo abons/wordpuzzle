@@ -6,7 +6,6 @@ definition with the answer masked out. One daily puzzle for everyone — with a 
 put your time on — plus free play in three sizes and a fourth you can earn. **The words, the
 definitions and the interface are Dutch.**
 
-[![Download APK](https://img.shields.io/badge/download-APK%20v1.2-16a34a)](https://github.com/abons/wordpuzzle/releases/download/v1.2/com.hrbons.wordpuzzle_3.apk)
 ![size](https://img.shields.io/badge/APK-92%20KB-brightgreen)
 ![Android](https://img.shields.io/badge/Android-5.0%2B-3ddc84)
 ![no ads](https://img.shields.io/badge/ads-none-black)
@@ -17,20 +16,22 @@ definitions and the interface are Dutch.**
   <img src="assets/clues.png" alt="The full clue list, horizontaal and verticaal" width="250">
 </p>
 
-## Install
+## Where to get it
 
-**Direct APK** — [com.hrbons.wordpuzzle_3.apk](https://github.com/abons/wordpuzzle/releases/download/v1.2/com.hrbons.wordpuzzle_3.apk)
-from the [latest release](https://github.com/abons/wordpuzzle/releases/latest), then open it (you may
-need to allow "install unknown apps" for your browser).
+**Word Cross is moving to Google Play, and there is no download here.** The APKs that used to hang on
+the releases below were taken down on 2026-08-16, and the shared landing page
+(<https://abons.github.io/wordguesser/>) no longer serves one either. The F-Droid repository that
+once carried these games was retired on 2026-08-07. Until the Play listing is live there is no way to
+install the game for the first time.
 
-It is also on the shared landing page for all four games:
-<https://abons.github.io/wordguesser/>.
+If you already have it, keep it — it works offline once the word list is cached, and nothing about it
+expires. One thing to know about the move: the Play version will be signed by Google rather than by
+this app's own key (SHA-256
+`24:05:A1:0D:35:24:40:37:9A:88:91:82:9F:02:BE:7C:B1:26:D1:55:6C:D7:33:92:93:8B:A9:FE:A2:AD:D8:CA`),
+so it will **not** install over what you have. Getting the Play version later means removing this one
+first, and a puzzle in progress does not survive that.
 
-There is no update channel — the F-Droid repository that used to serve these games was retired on
-2026-08-07. Check the releases page above for a newer version; a new APK installs straight over an
-older one and keeps your progress. Each APK is signed by its
-**own** app key; Word Cross's certificate is SHA-256
-`24:05:A1:0D:35:24:40:37:9A:88:91:82:9F:02:BE:7C:B1:26:D1:55:6C:D7:33:92:93:8B:A9:FE:A2:AD:D8:CA`.
+The release notes below stay as the record of what changed per version.
 
 ## What it is
 
@@ -74,14 +75,6 @@ It is written in **pure Kotlin on the Android framework only** — no AppCompat,
 third-party runtime libraries, and the whole UI is built in code. The daily leaderboard talks to its
 database over plain HTTPS, without an SDK. Result: a ~92&nbsp;KB APK that runs on Android 5.0+.
 
-## Verify the download
-
-`com.hrbons.wordpuzzle_3.apk` — 94,136 bytes, SHA-256:
-
-```
-681f02a7147d02ed309bf7040e147ce4c0ed45023741b16a1ab9e213a6840874
-```
-
 ## Privacy
 
 No ads, no analytics, no accounts, no third-party library in the build. The APK asks for INTERNET
@@ -107,6 +100,5 @@ If you enjoy it, you can [☕ support the developer on Ko-fi](https://ko-fi.com/
 
 ---
 
-*This repository is the public download for Word Cross: the signed APK, attached to a release per
-version. The source is kept in a private repository. There is no update channel — watch the
-[releases](https://github.com/abons/wordpuzzle/releases) page, or the shared landing page above.*
+*This repository is the public page for Word Cross. The source is kept in a private repository, and
+the game is distributed through Google Play — no APK is published here.*
