@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Word Cross — daily crossword puzzles in your browser</title>
+<meta name="description" content="Play Word Cross free in your browser: generated interlocking crosswords with masked-definition clues, in Dutch and English. A daily puzzle with a public leaderboard, four sizes, coins for hints. Ad-free, installable as an app.">
+<meta name="keywords" content="Word Cross, Woord Puzzel, crossword, kruiswoordpuzzel, daily crossword, Nederlands, woordspel, PWA, ad-free">
+<meta name="author" content="hrbons">
+<meta name="theme-color" content="#121213">
+<link rel="canonical" href="https://abons.github.io/wordpuzzle/">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23121213'/%3E%3Crect x='14' y='38' width='22' height='22' rx='4' fill='%23fff'/%3E%3Crect x='39' y='38' width='22' height='22' rx='4' fill='%23f5b301'/%3E%3Crect x='64' y='38' width='22' height='22' rx='4' fill='%23fff'/%3E%3Crect x='39' y='13' width='22' height='22' rx='4' fill='%23fff'/%3E%3Crect x='39' y='63' width='22' height='22' rx='4' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Word Cross">
+<meta property="og:title" content="Word Cross — daily crossword puzzles in your browser">
+<meta property="og:description" content="Free, ad-free generated crosswords with masked-definition clues, in Dutch and English. Daily puzzle, public leaderboard, four sizes.">
+<meta property="og:url" content="https://abons.github.io/wordpuzzle/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Word Cross",
+  "applicationCategory": "GameApplication",
+  "browserRequirements": "Requires JavaScript",
+  "description": "A free, ad-free crossword game in the browser: generated interlocking puzzles whose clues are definitions with the answer masked out, in Dutch and English. A daily puzzle with a public leaderboard, four sizes, coins for hints. Installable as an app (PWA).",
+  "url": "https://abons.github.io/wordpuzzle/",
+  "author": { "@type": "Person", "name": "hrbons" },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+  /*
+   * The six skin variable sets mirror the app's `Theme.kt` palettes; the scene classes mirror
+   * `SceneBackground.kt`'s eight palettes as sky→ground gradients (the drawn silhouettes are Canvas
+   * work the CSS stand-in skips — the same trade the sibling web ports made).
+   */
+  :root { color-scheme: dark;
+    --keytop:#4a4c52; --keybottom:#34363b; --keytext:#fff;
+    --cluebg:rgba(42,42,44,.8); --cluetext:#fff; --panel:rgba(0,0,0,.3);
+    --cellfill:#fff; --filledfill:#fff; --lockedfill:#fff; --cellborder:#3a3a3c; --letter:#121213;
+    --wordfill:#9ac7ff; --cursorfill:#f5b301; --lockedtext:#0d5424; --wrongtext:#8c1d18; --num:#555;
+    --dialogbg:#232427; --dialogedge:rgba(255,255,255,.13); --dialogtitle:#fff; --dialogtext:#e6e7ea;
+    --dialoghint:#a0a5ab; --dialogaccent:#f5b301; --wash:rgba(0,0,0,.35);
+  }
+  body[data-skin="night"] { --cluebg:rgba(32,33,36,.94); --panel:rgba(0,0,0,.54);
+    --cellfill:#1e2024; --filledfill:#262a30; --lockedfill:#1e2a24; --cellborder:#3a3d42; --letter:#ecedee;
+    --wordfill:#2c4a66; --cursorfill:#5a4408; --lockedtext:#64c98a; --wrongtext:#ff7b72; --num:#8a8d93;
+    --dialogbg:#17181b; --dialogtitle:#ecedee; --dialogtext:#dcdee1; --dialoghint:#9296a0; --dialogaccent:#e8b93b; }
+  body[data-skin="paper"] { --keytop:#fbf3e2; --keybottom:#eadfc8; --keytext:#23201a;
+    --cluebg:rgba(255,246,227,.95); --cluetext:#23201a; --panel:rgba(255,255,255,.2);
+    --cellfill:#fff9ec; --filledfill:#fff9ec; --lockedfill:#fff9ec; --cellborder:#cbb894; --letter:#1b1b1b;
+    --wordfill:#bfe0ff; --cursorfill:#ffc844; --lockedtext:#0d5424; --wrongtext:#8c1d18; --num:#9a7b4a;
+    --dialogbg:#fff9ec; --dialogedge:rgba(0,0,0,.13); --dialogtitle:#23201a; --dialogtext:#23201a;
+    --dialoghint:#6b6152; --dialogaccent:#8a5a00; --wash:rgba(0,0,0,.25); }
+  body[data-skin="warm"] { --keytop:#4a3f32; --keybottom:#322a21; --keytext:#f6ecdc;
+    --cluebg:rgba(43,33,24,.8); --cluetext:#f4e9d8;
+    --cellborder:#6b5a42; --num:#7a6242;
+    --dialogbg:#2b2118; --dialogtitle:#f6ecdc; --dialogtext:#f4e9d8; --dialoghint:#b9a88e; --dialogaccent:#f5b301; }
+  body[data-skin="board"] { --panel:rgba(16,32,48,.35);
+    --filledfill:#e8f1fb; --lockedfill:#d8f3e2; --cellborder:#b9c2cc;
+    --wordfill:#7fb6f5; --cursorfill:#ffc107; --num:#3c6ea5; --dialogaccent:#7fb6f5; }
+  body[data-skin="contrast"] { --keytop:#2b2d31; --keybottom:#16181b;
+    --cluebg:rgba(18,19,22,.95); --panel:rgba(0,0,0,.6);
+    --lockedfill:#ffdcbe; --cellborder:#2a2c30;
+    --wordfill:#e9ecef; --cursorfill:#d3d8dd; --lockedtext:#9a3412; --wrongtext:#0b3d91; --num:#4a4d52;
+    --dialogbg:#16181b; --dialogtext:#f1f3f5; --dialoghint:#c3c8ce; }
+
+  body { margin: 0; background: #121213; color: #fff; font: 16px system-ui, sans-serif;
+         display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+  .scene { width: 100%; max-width: 560px; box-sizing: border-box; border-radius: 18px; overflow: hidden;
+           padding: 10px 10px 12px; display: flex; flex-direction: column; position: relative; }
+  .scene.mountains { background: linear-gradient(180deg,#2e5e8c 0%,#acd4e8 45%,#5a7a96 62%,#3c5a75 80%,#243b50 100%); }
+  .scene.ocean     { background: linear-gradient(180deg,#3e86b5 0%,#bfe6ef 45%,#3e7c86 62%,#2e7d9a 80%,#1f5f7a 100%); }
+  .scene.forest    { background: linear-gradient(180deg,#4e8fb0 0%,#cde8d6 45%,#3e7a52 62%,#2c6140 80%,#1c4a2e 100%); }
+  .scene.desert    { background: linear-gradient(180deg,#e8894a 0%,#f6d9a8 45%,#d98b4a 62%,#c9743a 80%,#a85a2c 100%); }
+  .scene.city      { background: linear-gradient(180deg,#3a2e5c 0%,#e08a6e 45%,#433a63 62%,#241e3a 100%); }
+  .scene.night     { background: linear-gradient(180deg,#0b1030 0%,#243060 45%,#1a2148 62%,#141a3a 80%,#0c1028 100%); }
+  .scene.meadow    { background: linear-gradient(180deg,#5aa6de 0%,#cfeeff 45%,#7dbe5a 62%,#5ca043 80%,#3e7e2e 100%); }
+  .scene.autumn    { background: linear-gradient(180deg,#c98a3a 0%,#f3d9a0 45%,#b5702e 62%,#c96b24 80%,#8a4a1e 100%); }
+  body[data-skin="night"] .scene::before, body[data-skin="contrast"] .scene::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: rgba(0,0,0,.45); }
+
+  .shadowed { text-shadow: 0 1px 4px rgba(0,0,0,.55); }
+  .topbar { display: flex; align-items: center; gap: 4px; position: relative; z-index: 1; }
+  .titles { flex: 1; min-width: 0; }
+  .title { font-size: 20px; font-weight: 700; color: #fff; }
+  .subtitle { font-size: 12px; color: #fff; display: flex; gap: 6px; align-items: baseline; flex-wrap: wrap; }
+  .subtitle button { background: none; border: none; color: #fff; font: inherit; cursor: pointer;
+                     text-shadow: inherit; padding: 0; }
+  .iconbtn { background: var(--wash); color: #fff; border: none; border-radius: 10px;
+             width: 42px; height: 42px; font-size: 17px; cursor: pointer; }
+  .coinpill { background: var(--wash); color: #fff; border: none; border-radius: 10px;
+              padding: 0 10px; height: 42px; font-size: 14px; font-weight: 700; cursor: pointer; }
+  .boardwrap { position: relative; z-index: 1; display: flex; justify-content: center;
+               padding: 10px 0 8px; min-height: 200px; align-items: center; }
+  .panel { background: var(--panel); border-radius: 10px; padding: 6px; }
+  .grid { display: grid; gap: 2px; }
+  .cell { position: relative; width: var(--cell, 26px); height: var(--cell, 26px); border-radius: 3px;
+          background: var(--cellfill); border: 1px solid var(--cellborder); box-sizing: border-box;
+          display: flex; align-items: center; justify-content: center; cursor: pointer;
+          font-weight: 700; font-size: calc(var(--cell, 26px) * .6); color: var(--letter); padding: 0; }
+  .cell.blocked { visibility: hidden; pointer-events: none; }
+  .cell.inword { background: var(--wordfill); }
+  .cell.cursor { background: var(--cursorfill); }
+  .cell.wrongletter { color: var(--wrongtext); }
+  .cell.lockedletter { color: var(--lockedtext); }
+  .cell .num { position: absolute; top: 0; left: 1.5px; font-size: calc(var(--cell, 26px) * .28);
+               font-weight: 600; color: var(--num); }
+  .cluebar { position: relative; z-index: 1; display: flex; align-items: center; gap: 6px;
+             background: var(--cluebg); color: var(--cluetext); border-radius: 10px;
+             padding: 6px 8px; min-height: 40px; }
+  .cluebar .clue { flex: 1; font-size: 13px; line-height: 1.25; }
+  .cluebar button { background: none; border: none; color: var(--cluetext); font-size: 16px;
+                    cursor: pointer; padding: 4px 8px; }
+  .actions { position: relative; z-index: 1; display: flex; gap: 6px; margin: 8px 0 6px; }
+  .cap { flex: 1; background: linear-gradient(180deg, var(--keytop), var(--keybottom));
+         color: var(--keytext); border: none; border-radius: 13px; height: 44px;
+         font-size: 14px; font-weight: 600; cursor: pointer; }
+  .keyboard { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 4px; }
+  .krow { display: flex; gap: 4px; justify-content: center; }
+  .key { flex: 1; max-width: 44px; background: linear-gradient(180deg, var(--keytop), var(--keybottom));
+         color: var(--keytext); border: none; border-radius: 13px; height: 54px;
+         font-size: 16px; font-weight: 700; cursor: pointer; padding: 0; }
+  .key.wide { max-width: 66px; }
+  .overlay { position: fixed; inset: 0; background: rgba(0,0,0,.65); display: flex;
+             align-items: center; justify-content: center; z-index: 10; }
+  .modal { background: var(--dialogbg); border: 1px solid var(--dialogedge); border-radius: 12px;
+           padding: 14px; width: min(92vw, 440px); max-height: 82vh; overflow-y: auto;
+           color: var(--dialogtext); }
+  .modalhead { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .modaltitle { font-weight: 700; color: var(--dialogtitle); }
+  .modalx { background: none; border: none; color: var(--dialoghint); font-size: 16px; cursor: pointer; }
+  .statline { color: var(--dialogtext); font-size: 14px; margin: 8px 0; white-space: pre-line; }
+  .asideline { color: var(--dialoghint); font-size: 12px; margin: 6px 0; white-space: pre-line; }
+  .action { background: var(--keybottom); color: var(--keytext); border: none; border-radius: 10px;
+            padding: 9px 14px; font-size: 14px; cursor: pointer; margin: 4px 6px 2px 0; }
+  .action.primary { background: var(--dialogaccent); color: #121213; font-weight: 700; }
+  .listitem { display: block; width: 100%; text-align: left; background: none; border: none;
+              color: var(--dialogtext); font-size: 15px; padding: 9px 4px; cursor: pointer;
+              border-bottom: 1px solid var(--dialogedge); }
+  .listitem:hover { color: var(--dialogaccent); }
+  .boardrow { font-size: 14px; padding: 5px 0; color: var(--dialogtext); }
+  .boardrow.mine { color: var(--dialogaccent); font-weight: 700; }
+  .nameinput { width: 100%; box-sizing: border-box; background: transparent; color: var(--dialogtext);
+               border: 1px solid var(--dialogedge); border-radius: 6px; padding: 9px 10px;
+               font-size: 15px; text-transform: uppercase; margin: 6px 0; }
+  .toast { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%);
+           background: var(--dialogbg); color: var(--dialogtext); border-radius: 10px;
+           padding: 10px 16px; font-size: 14px; font-weight: 600; z-index: 20;
+           max-width: 88vw; text-align: center; }
+  .loading { position: absolute; inset: 0; background: #121213; z-index: 6; display: flex;
+             flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+             color: #9aa0a6; font-size: 15px; padding: 0 24px; text-align: center; }
+  .spinner { width: 34px; height: 34px; border: 4px solid #2a2a2c; border-top-color: #f5b301;
+             border-radius: 50%; animation: spin 1s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .landing { width: 100%; max-width: 560px; padding: 0 16px 24px; box-sizing: border-box; }
+  .card { background: #1c1c1d; border: 1px solid #2c2c2e; border-radius: 12px;
+          padding: 16px 18px; margin: 12px 0; font-size: 14px; }
+  .card h2 { font-size: 15px; margin: 0 0 8px; }
+  .card p { margin: 6px 0; color: #c9c9c9; }
+  .card a { color: #7fd4a0; }
+  footer { color: #888; font-size: .8rem; margin: 8px 0 24px; text-align: center; }
+  footer a { color: #7fd4a0; }
+</style>
+</head>
+<body>
+<div id="scene" class="scene meadow">
+  <div class="topbar">
+    <div class="titles">
+      <div class="title shadowed" id="apptitle">Word Cross</div>
+      <div class="subtitle shadowed"><span id="subtitle"></span><button id="langpill">· NL</button></div>
+    </div>
+    <button class="coinpill" id="coinpill">🪙 5</button>
+    <button class="iconbtn" id="btn-stats">📊</button>
+    <button class="iconbtn" id="btn-daily">📅</button>
+    <button class="iconbtn" id="btn-new">➕</button>
+    <button class="iconbtn" id="install" hidden>📲</button>
+  </div>
+  <div class="boardwrap" id="boardwrap">
+    <div class="panel"><div class="grid" id="grid"></div></div>
+    <div class="loading" id="loading"><div class="spinner"></div><div id="loadingmsg"></div><div id="loadingdetail" style="font-size:12px"></div></div>
+  </div>
+  <div class="cluebar">
+    <button id="btn-prev">◀</button>
+    <div class="clue" id="clue"></div>
+    <button id="btn-next">▶</button>
+  </div>
+  <div class="actions">
+    <button class="cap" id="btn-check">Check</button>
+    <button class="cap" id="btn-hint">Hint</button>
+    <button class="cap" id="btn-clues">…</button>
+  </div>
+  <div class="keyboard" id="keyboard"></div>
+</div>
+
+<div class="landing">
+  <div class="card">
+    <h2>The Android app</h2>
+    <p>Word Cross is also a tiny (~92&nbsp;KB) native Android app, and it is moving to Google
+      Play — until that listing is live there is no way to install it for the first time. If you
+      already have it, keep it: it works offline and nothing about it expires. This page and the app
+      share the same word data, the same daily puzzle and the same leaderboard. The
+      <a href="https://github.com/abons/wordpuzzle/releases">releases</a> page lists what changed
+      per version.</p>
+  </div>
+  <footer>
+    Built with <a href="https://ko-fi.com/hrbons">☕ support the dev</a>
+  </footer>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

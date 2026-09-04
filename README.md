@@ -16,7 +16,12 @@ definitions and the interface are Dutch.**
   <img src="assets/clues.png" alt="The full clue list, horizontaal and verticaal" width="250">
 </p>
 
-## Where to get it
+## ▶️ Play it in your browser
+
+**<https://abons.github.io/wordpuzzle/>** — the same game as a web app: the same word data, the
+same daily puzzle and the same leaderboard, installable as a PWA. Nothing to download.
+
+## Where to get the Android app
 
 **Word Cross is moving to Google Play, and there is no download here.** The APKs that used to hang on
 the releases below were taken down on 2026-08-16, and the shared landing page
@@ -100,5 +105,6 @@ If you enjoy it, you can [☕ support the developer on Ko-fi](https://ko-fi.com/
 
 ---
 
-*This repository is the public page for Word Cross. The source is kept in a private repository, and
-the game is distributed through Google Play — no APK is published here.*
+*This repository is the public page for Word Cross and serves its web version over GitHub Pages.
+The source is kept in a private repository, and the Android app is distributed through Google
+Play — no APK is published here.*
