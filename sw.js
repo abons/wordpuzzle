@@ -1,7 +1,7 @@
 /* Skeleton service worker: cache-first shell, cache-first word lists (the versioned ones are
  * immutable-by-rule on the mirror; the unversioned Dutch files change with a cache bump in the app,
  * which on the web is a VERSION bump here). Bump VERSION on every deploy — the publish script stamps it. */
-const VERSION = "v202609041225";
+const VERSION = "v202609041244";
 const SHELL = ["./", "app.js", "manifest.webmanifest", "icon-192.png", "icon-512.png"];
 
 self.addEventListener("install", (e) => {

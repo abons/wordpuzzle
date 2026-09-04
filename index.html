@@ -164,6 +164,14 @@
   .card h2 { font-size: 15px; margin: 0 0 8px; }
   .card p { margin: 6px 0; color: #c9c9c9; }
   .card a { color: #7fd4a0; }
+  ul.games { list-style: none; margin: 0; padding: 0; }
+  ul.games li { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; margin: .55em 0; }
+  ul.games .n { font-weight: 600; }
+  ul.games .d { color: #9a9a9a; font-size: .9em; }
+  .pill { font-size: .72rem; font-weight: 600; padding: 2px 7px; border-radius: 999px;
+          background: #14361f; color: #7fd4a0; white-space: nowrap; text-decoration: none; }
+  .pill.repo { background: #23303a; color: #9fc3dc; }
+  a.pill:hover { text-decoration: underline; }
   footer { color: #888; font-size: .8rem; margin: 8px 0 24px; text-align: center; }
   footer a { color: #7fd4a0; }
 </style>
@@ -207,6 +215,26 @@
       share the same word data, the same daily puzzle and the same leaderboard. The
       <a href="https://github.com/abons/wordpuzzle/releases">releases</a> page lists what changed
       per version.</p>
+  </div>
+
+  <div class="card">
+    <h2>More games by hrbons</h2>
+    <p>All of them are the same idea: pure Kotlin on the Android framework only — no ads, no
+      tracking, no third-party libraries, and an APK measured in kilobytes.</p>
+    <ul class="games">
+      <li><span class="n">Word Cross</span>
+        <span class="pill">play it on this page</span>
+        <span class="d">Crossword puzzles built from Dutch words and their definitions; a daily one, with a leaderboard.</span></li>
+      <li><span class="n">Word Guesser</span>
+        <a class="pill repo" href="https://abons.github.io/wordguesser/">play it in your browser</a>
+        <span class="d">Guess the word from colour clues; daily puzzle, leaderboard, duels.</span></li>
+      <li><span class="n">Word Swipe</span>
+        <a class="pill repo" href="https://abons.github.io/wordfinder/">play it in your browser</a>
+        <span class="d">Swipe letters on a wheel to fill a crossword; bonus words pay for hints.</span></li>
+      <li><span class="n">Fast Lane</span>
+        <a class="pill repo" href="https://github.com/abons/fastlane">coming to Google Play</a>
+        <span class="d">A life-simulation: work, study, shop and climb the career ladder against an AI rival.</span></li>
+    </ul>
   </div>
   <footer>
     Built with <a href="https://ko-fi.com/hrbons">☕ support the dev</a>
